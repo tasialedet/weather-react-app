@@ -1,0 +1,22 @@
+li {
+  list-style: none;
+  font-weight: bolder;
+  font-size: 30px;
+}
+ul {
+  padding: 0;
+  text-align: right;
+}
+.temp {
+  font-size: 40px;
+}
+.units {
+  position: relative;
+  top: -17px;
+  font-size: 25px;
+  font-weight: normal;
+}
+.Description {
+  font-weight: bolder;
+  font-size: 30px;
+}
