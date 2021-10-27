@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Description.css";
+import Date from "./Date";
 
 let iconLink = "http://openweathermap.org/img/wn/10d@2x.png";
 export default function Description(props) {
   const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
-    setTemperature(response.data.main.temp);
+    setWeatherData({
+      date: new Date(response.data.dt * 1000)
+      temperature: response.data.main.temp);
+    })
     setReady(true);
   }
 

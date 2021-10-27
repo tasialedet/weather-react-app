@@ -1,7 +1,7 @@
 import "./App.css";
 import Search from "./Search";
 import Date from "./Date";
-import Description from "./Description";
+import Weather from "./Weather";
 import City from "./City";
 import Forecast from "./Forecast";
 import Footer from "./Footer";
@@ -12,7 +12,7 @@ export default function App() {
       <Search />
       <City name="Houston" />
       <Date />
-      <Description
+      <Weather
         description="clear sky"
         precip={2}
         wind={1}
