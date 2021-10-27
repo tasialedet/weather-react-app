@@ -14,7 +14,6 @@ export default function App() {
       <Date />
       <Description
         description="clear sky"
-        temp={88}
         precip={2}
         wind={1}
         humidity={18}
