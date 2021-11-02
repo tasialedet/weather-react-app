@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Forecast.css";
+import WeatherForecastDay from "./WeatherForecastDay"
 
 let iconLink = "https://openweathermap.org/img/wn/10d@2x.png";
 export default function Forecast(props) {
@@ -15,21 +16,15 @@ export default function Forecast(props) {
     return (
       <div className="Forecast">
         <div className="row">
-          <div class="col-2">
-            <div className="forecastDate">Thurs</div>
-            <div className="weatherForecastIcon">
-              <img src={iconLink} alt="" />
-            </div>
-            <span className="forecastTempMax">
-              {" "}
-              {Math.round(forecast[0].temp.max)}°{" "}
-            </span>
-            |
-            <span class="forecastTempMin">
-              {" "}
-              {Math.round(forecast[0].temp.min)}°
-            </span>
-          </div>
+          {forecast.map(function (dailyForecast, index) {
+            if (index < 6) {
+              return (
+                <div className="col-2" key={index}>
+                  <WeatherForecastDay data={dailyForecast} />
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     );
