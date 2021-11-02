@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Forecast.css";
-import WeatherForecastDay from "./WeatherForecastDay"
+import WeatherForecastDay from "./WeatherForecastDay";
 
-let iconLink = "https://openweathermap.org/img/wn/10d@2x.png";
 export default function Forecast(props) {
   const [ready, setReady] = useState(false);
   const [forecast, setForecast] = useState(null);
