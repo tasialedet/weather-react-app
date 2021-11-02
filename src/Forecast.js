@@ -20,8 +20,15 @@ export default function Forecast(props) {
             <div className="weatherForecastIcon">
               <img src={iconLink} alt="" />
             </div>
-            <span className="forecastTempMax"> {props.maxTemp}° </span>|
-            <span class="forecastTempMin"> {props.minTemp}°</span>
+            <span className="forecastTempMax">
+              {" "}
+              {Math.round(forecast[0].temp.max)}°{" "}
+            </span>
+            |
+            <span class="forecastTempMin">
+              {" "}
+              {Math.round(forecast[0].temp.min)}°
+            </span>
           </div>
         </div>
       </div>
