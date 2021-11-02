@@ -1,25 +1,23 @@
 import React from "react";
 import "./Weather.css";
 import Date from "./Date";
+import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherInfo(props) {
   return (
     <div className="WeatherInfo">
       <h1 className="cityName"> {props.info.city}</h1>
-      <Date currentDate={props.info.date} currentTime={props.info.time}/>
+      <Date currentDate={props.info.date} currentTime={props.info.time} />
       <div className="row">
         <div className="col-6">
           <div className="Description">
             {props.info.description}
             <br />
-            <img
-              className="weatherIcon"
-              src={props.info.iconUrl}
-              alt={props.info.description}
-            />
+            <WeatherIcon code={props.info.icon} />
+
             <strong className="temp">
               {Math.round(props.info.temperature)}
-              <span className="units">°F</span>
+              <span className="units">°F | °C </span>
             </strong>
           </div>
         </div>
@@ -29,10 +27,16 @@ export default function WeatherInfo(props) {
             <ul>
               <li className="Wind">
                 {" "}
-                Wind <span className="windSpeed">{Math.round(props.info.wind)} mph</span>
+                Wind{" "}
+                <span className="windSpeed">
+                  {Math.round(props.info.wind)} mph
+                </span>
               </li>
               <li className="Humidity">
-                Humidity <span className="humid">{Math.round(props.info.humidity)}%</span>
+                Humidity{" "}
+                <span className="humid">
+                  {Math.round(props.info.humidity)}%
+                </span>
               </li>{" "}
             </ul>
           </div>
