@@ -2,27 +2,28 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
+import Forecast from "./Forecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
-  
 
   function handleResponse(response) {
     setWeatherData({
       ready: true,
       date: new Date(response.data.dt * 1000),
       time: new Date().toLocaleString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  }),
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      }),
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,
       icon: response.data.weather[0].icon,
       city: response.data.name,
+      coordinates: response.data.coord,
     });
   }
 
@@ -67,6 +68,7 @@ export default function Weather(props) {
           </form>
         </div>
         <WeatherInfo info={weatherData} />
+        <Forecast coordinates={weatherData.coordinates} info={weatherData}/>
       </div>
     );
   } else {
