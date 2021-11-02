@@ -11,7 +11,7 @@ export default function WeatherInfo(props) {
       <Date currentDate={props.info.date} currentTime={props.info.time} />
       <div className="row">
         <div className="col-6">
-          <div className="Description">
+          <div className="description">
             {props.info.description}
             <br />
             <div className="row mt-3">

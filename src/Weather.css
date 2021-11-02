@@ -1,19 +1,11 @@
 li {
   list-style: none;
   font-weight: bolder;
-  font-size: 30px;
+  font-size: 35px;
 }
 ul {
   padding: 0;
   text-align: right;
-}
-.temp {
-  font-size: 40px;
-}
-
-.Description {
-  font-weight: bolder;
-  font-size: 30px;
 }
 form {
   text-align: left;
@@ -22,13 +14,17 @@ form {
   padding-top: 10px;
 }
 
-.searchButton:hover {
-  background: #0d6efd;
-  color: white;
-  transition: all 500ms ease-in-out;
-  border-radius: 10px;
+.temp {
+  font-size: 40px;
 }
+
+.description {
+  font-weight: bolder;
+  font-size: 40px;
+}
+
 .locateButton {
+  font-weight: bolder;
   padding: 0px 15px;
   border-radius: 10px;
   font-size: 28px;
@@ -36,18 +32,27 @@ form {
   box-shadow: none;
   background: none;
 }
+.cityName {
+  font-size: 60px;
+}
+
+.searchButton:hover {
+  background: #0d6efd;
+  color: white;
+  transition: all 500ms ease-in-out;
+  border-radius: 10px;
+}
+
 .locateButton:hover {
   background: #ffff;
   transition: all 500ms ease-in-out;
   border-radius: 10px;
 }
 #search {
+  font-weight: bolder;
   padding: 0px 15px;
   font-size: 28px;
   border-radius: 10px;
   color: black;
   margin: 5px;
-}
-.cityName {
-  font-size: 50px;
 }

@@ -23,7 +23,7 @@ export default function Date(props) {
   }
   return (
     <div className="date">
-      Last checked: {day} {props.currentTime}
+      Last checked: {day} at {props.currentTime}
     </div>
   );
 }
