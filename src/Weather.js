@@ -7,6 +7,7 @@ import Forecast from "./Forecast";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+  let [currentLocation, setCurrentLocation] = useState(null);
 
   function handleResponse(response) {
     setWeatherData({
@@ -41,6 +42,25 @@ export default function Weather(props) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
     axios.get(apiUrl).then(handleResponse);
   }
+  function showPosition(position) {
+    setCurrentLocation({
+      lat: position.coords.latitude,
+      lon: position.coords.longitude,
+    });
+    searchCurrentLocation();
+  }
+  function currentPosition(position) {
+    showPosition(position);
+  }
+  function getPosition(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(currentPosition);
+  }
+  function searchCurrentLocation() {
+    let apiKey = "cc0bd53dffe0f46c40ce2f0a1377a17e";
+    let apiUrlLoc = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLocation.lat}&lon=${currentLocation.lon}&appid=${apiKey}&units=imperial`;
+    axios.get(apiUrlLoc).then(handleResponse);
+  }
 
   if (weatherData.ready) {
     return (
@@ -62,17 +82,21 @@ export default function Weather(props) {
             >
               Search 🔎
             </button>
-            <button type="submit" className="locateButton">
+            <button
+              type="submit"
+              className="locateButton"
+              onClick={getPosition}
+            >
               Current Location 📍
             </button>
           </form>
         </div>
         <WeatherInfo info={weatherData} />
-        <Forecast coordinates={weatherData.coordinates} info={weatherData}/>
+        <Forecast coordinates={weatherData.coordinates} info={weatherData} />
       </div>
     );
   } else {
     search();
-    return "Loading...";
+    return null;
   }
 }
