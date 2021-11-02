@@ -2,7 +2,6 @@ import React from "react";
 import "./Date.css";
 
 export default function Date(props) {
-  console.log(props.date);
   let days = [
     "Sunday",
     "Monday",
@@ -12,12 +11,19 @@ export default function Date(props) {
     "Friday",
     "Saturday",
   ];
-  let day = days[props.date.getDay()];
-  let hours = props.date.getHours();
-  let minutes = props.date.getMinutes();
+
+  let day = days[props.currentDate.getDay()];
+  let hours = props.currentDate.getHours() % 12 || 12;
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = props.currentDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   return (
-    <div>
-      Last checked at: {day} {hours}:{minutes}
+    <div className="date">
+      Last checked: {day} {props.currentTime}
     </div>
   );
 }

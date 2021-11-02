@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Forecast.css";
 
-let iconLink = "http://openweathermap.org/img/wn/10d@2x.png";
+let iconLink = "https://openweathermap.org/img/wn/10d@2x.png";
 export default function Forecast(props) {
   const [ready, setReady] = useState(false);
   function handleResponse(response) {
@@ -72,8 +72,7 @@ export default function Forecast(props) {
     );
   } else {
     const apiKey = "cc0bd53dffe0f46c40ce2f0a1377a17e";
-    let city = "New Orleans";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=imperial`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
