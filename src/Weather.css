@@ -10,12 +10,7 @@ ul {
 .temp {
   font-size: 40px;
 }
-.units {
-  position: relative;
-  top: -17px;
-  font-size: 25px;
-  font-weight: normal;
-}
+
 .Description {
   font-weight: bolder;
   font-size: 30px;

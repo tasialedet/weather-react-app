@@ -1,0 +1,20 @@
+.units {
+  position: relative;
+  top: -23px;
+  font-size: 27px;
+  font-weight: bolder;
+}
+.fahrenheit:hover {
+  background: #fce9ac;
+  transition: all 500ms ease-in-out;
+  color: black;
+}
+.celsius:hover {
+  background: #fce9ac;
+  transition: all 500ms ease-in-out;
+  color: black;
+}
+.temp {
+  font-size: 54px;
+  margin-left: 3px;
+}
