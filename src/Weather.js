@@ -7,7 +7,6 @@ import Forecast from "./Forecast";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
-  let [location, setLocation] = useState("");
 
   function handleResponse(response) {
     setWeatherData({
@@ -43,23 +42,13 @@ export default function Weather(props) {
     axios.get(apiUrl).then(handleResponse);
   }
 
-  function showPosition(position) {
-    setLocation({
-      lat: position.coords.latitude,
-      lon: position.coords.longitude,
-    });
-    searchCurrentLocation();
-  }
-  function currentPosition(position) {
-    showPosition(position);
-  }
   function getPosition(event) {
     event.preventDefault();
-    navigator.geolocation.getCurrentPosition(currentPosition);
+    navigator.geolocation.getCurrentPosition(searchCurrentLocation);
   }
-  function searchCurrentLocation() {
+  function searchCurrentLocation(position) {
     let apiKey = "cc0bd53dffe0f46c40ce2f0a1377a17e";
-    let apiUrlLoc = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${apiKey}&units=imperial`;
+    let apiUrlLoc = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
     axios.get(apiUrlLoc).then(handleResponse);
     console.log(apiUrlLoc);
   }
