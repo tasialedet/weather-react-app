@@ -7,7 +7,7 @@ import Forecast from "./Forecast";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
-  let [currentLocation, setCurrentLocation] = useState(null);
+  let [location, setLocation] = useState("");
 
   function handleResponse(response) {
     setWeatherData({
@@ -42,8 +42,9 @@ export default function Weather(props) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
     axios.get(apiUrl).then(handleResponse);
   }
+
   function showPosition(position) {
-    setCurrentLocation({
+    setLocation({
       lat: position.coords.latitude,
       lon: position.coords.longitude,
     });
@@ -58,8 +59,9 @@ export default function Weather(props) {
   }
   function searchCurrentLocation() {
     let apiKey = "cc0bd53dffe0f46c40ce2f0a1377a17e";
-    let apiUrlLoc = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLocation.lat}&lon=${currentLocation.lon}&appid=${apiKey}&units=imperial`;
+    let apiUrlLoc = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${apiKey}&units=imperial`;
     axios.get(apiUrlLoc).then(handleResponse);
+    console.log(apiUrlLoc);
   }
 
   if (weatherData.ready) {
